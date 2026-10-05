@@ -1,0 +1,1396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>T-Town Autoparts – Tamenglong, Manipur</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --red:#C0392B;--red-dark:#922B21;--red-light:#E74C3C;
+  --yellow:#F39C12;--black:#0D0D0D;--gray-dark:#1A1A1A;
+  --gray-mid:#2C2C2C;--gray-light:#3D3D3D;--gray-muted:#888;
+  --white:#F5F5F0;--white-pure:#fff;
+  --green:#27AE60;--blue:#2980B9;
+  --font-head:'Barlow Condensed',sans-serif;
+  --font-body:'Barlow',sans-serif;
+}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--white);font-family:var(--font-body);font-size:16px;line-height:1.6;}
+
+/* ── NAV ── */
+nav{background:var(--gray-dark);border-bottom:3px solid var(--red);position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0 2rem;height:64px;gap:1rem;}
+.nav-logo{font-family:var(--font-head);font-weight:900;font-size:1.8rem;letter-spacing:.04em;color:var(--white);text-decoration:none;text-transform:uppercase;white-space:nowrap;}
+.nav-logo span{color:var(--red);}
+.nav-links{display:flex;gap:1.5rem;list-style:none;}
+.nav-links a{color:var(--gray-muted);text-decoration:none;font-family:var(--font-head);font-size:1rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;transition:color .2s;}
+.nav-links a:hover{color:var(--red);}
+.nav-actions{display:flex;align-items:center;gap:.75rem;flex-shrink:0;}
+.nav-search{display:flex;align-items:center;background:var(--gray-mid);border:1px solid var(--gray-light);border-radius:4px;overflow:hidden;}
+.nav-search input{background:none;border:none;outline:none;color:var(--white);font-family:var(--font-body);font-size:.875rem;padding:.45rem .75rem;width:180px;}
+.nav-search input::placeholder{color:var(--gray-muted);}
+.nav-search button{background:var(--red);border:none;color:white;padding:.45rem .8rem;cursor:pointer;font-size:.875rem;transition:background .2s;}
+.nav-search button:hover{background:var(--red-dark);}
+.nav-btn{background:none;border:1.5px solid var(--gray-light);color:var(--white);border-radius:4px;padding:.4rem .9rem;cursor:pointer;font-family:var(--font-head);font-size:.9rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;transition:border-color .2s,color .2s,background .2s;display:flex;align-items:center;gap:.4rem;white-space:nowrap;}
+.nav-btn:hover{border-color:var(--red);color:var(--red);}
+.nav-btn.active{background:var(--red);border-color:var(--red);color:white;}
+.cart-count{background:var(--red);color:white;border-radius:50%;width:18px;height:18px;font-size:.7rem;display:flex;align-items:center;justify-content:center;font-weight:700;}
+
+/* ── TICKER ── */
+.ticker{background:var(--red);overflow:hidden;white-space:nowrap;padding:.45rem 0;}
+.ticker-inner{display:inline-block;animation:ticker 32s linear infinite;font-family:var(--font-head);font-weight:600;font-size:.85rem;letter-spacing:.1em;text-transform:uppercase;color:white;}
+@keyframes ticker{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+.ticker-inner span{margin:0 2rem;}
+.ticker-inner span::before{content:'★  ';}
+
+/* ── HERO ── */
+.hero{background:linear-gradient(135deg,var(--gray-dark) 0%,#111 60%,#1a0a08 100%);min-height:480px;display:flex;align-items:center;position:relative;overflow:hidden;padding:4rem 2rem;}
+.hero::before{content:'';position:absolute;right:-100px;top:50%;transform:translateY(-50%);width:500px;height:500px;background:radial-gradient(circle,rgba(192,57,43,.15) 0%,transparent 65%);}
+.hero-content{max-width:640px;position:relative;z-index:1;}
+.hero-tag{display:inline-block;background:var(--red);color:white;font-family:var(--font-head);font-weight:700;font-size:.8rem;letter-spacing:.15em;text-transform:uppercase;padding:.25rem .75rem;margin-bottom:1.25rem;border-radius:2px;}
+.hero h1{font-family:var(--font-head);font-weight:900;font-size:clamp(3rem,6vw,5.5rem);line-height:.95;text-transform:uppercase;letter-spacing:.02em;margin-bottom:1.25rem;}
+.hero h1 span{color:var(--red);}
+.hero p{color:var(--gray-muted);font-size:1.05rem;max-width:480px;margin-bottom:2rem;line-height:1.65;}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
+.btn-primary{background:var(--red);color:white;border:none;padding:.8rem 2rem;font-family:var(--font-head);font-size:1.05rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;border-radius:3px;transition:background .2s,transform .15s;text-decoration:none;display:inline-block;}
+.btn-primary:hover{background:var(--red-dark);transform:translateY(-1px);}
+.btn-secondary{background:transparent;color:var(--white);border:1.5px solid var(--gray-light);padding:.8rem 2rem;font-family:var(--font-head);font-size:1.05rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;border-radius:3px;transition:border-color .2s,color .2s;text-decoration:none;display:inline-block;}
+.btn-secondary:hover{border-color:var(--red);color:var(--red);}
+
+/* ── CAT BAR ── */
+.cat-bar{background:var(--gray-dark);border-bottom:1px solid var(--gray-mid);padding:1rem 2rem;display:flex;gap:.6rem;flex-wrap:wrap;align-items:center;}
+.cat-label{font-family:var(--font-head);font-weight:700;font-size:.85rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gray-muted);margin-right:.4rem;}
+.cat-pill{background:var(--gray-mid);border:1px solid var(--gray-light);color:var(--white);border-radius:100px;padding:.3rem 1rem;font-family:var(--font-head);font-size:.85rem;font-weight:600;letter-spacing:.05em;cursor:pointer;transition:all .2s;text-transform:uppercase;}
+.cat-pill:hover,.cat-pill.active{background:var(--red);border-color:var(--red);color:white;}
+
+/* ── TRUST STRIP ── */
+.trust-strip{background:var(--gray-dark);border-top:1px solid var(--gray-mid);border-bottom:1px solid var(--gray-mid);display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));}
+.trust-item{padding:1.5rem;display:flex;align-items:center;gap:1rem;border-right:1px solid var(--gray-mid);}
+.trust-item:last-child{border-right:none;}
+.trust-icon{font-size:1.8rem;flex-shrink:0;width:44px;text-align:center;}
+.trust-label{font-family:var(--font-head);font-weight:700;font-size:.9rem;text-transform:uppercase;letter-spacing:.04em;}
+.trust-sub{font-size:.78rem;color:var(--gray-muted);margin-top:.2rem;}
+
+/* ── MAIN ── */
+.main{max-width:1280px;margin:0 auto;padding:3rem 2rem;}
+.section-header{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:1.75rem;border-bottom:1px solid var(--gray-mid);padding-bottom:1rem;}
+.section-title{font-family:var(--font-head);font-weight:800;font-size:1.9rem;text-transform:uppercase;letter-spacing:.04em;}
+.section-title span{color:var(--red);}
+.see-all{color:var(--red);font-family:var(--font-head);font-size:.85rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:color .2s;border:none;background:none;}
+.see-all:hover{color:var(--red-light);}
+
+/* ── SEARCH RESULTS ── */
+#searchResultsBanner{display:none;background:var(--gray-mid);border:1px solid var(--gray-light);border-radius:6px;padding:1rem 1.5rem;margin-bottom:1.5rem;font-family:var(--font-head);font-size:1rem;color:var(--white);align-items:center;justify-content:space-between;}
+#searchResultsBanner.visible{display:flex;}
+
+/* ── PRODUCTS ── */
+.product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1.25rem;margin-bottom:3.5rem;}
+.product-card{background:var(--gray-dark);border:1px solid var(--gray-mid);border-radius:6px;overflow:hidden;transition:border-color .2s,transform .2s;cursor:pointer;position:relative;}
+.product-card:hover{border-color:var(--red);transform:translateY(-3px);}
+.product-badge{position:absolute;top:10px;left:10px;background:var(--red);color:white;font-family:var(--font-head);font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.2rem .6rem;border-radius:2px;z-index:1;}
+.badge-sale{background:var(--yellow);color:#111;}
+.product-img{width:100%;height:180px;background:var(--gray-mid);display:flex;align-items:center;justify-content:center;}
+.product-info{padding:1rem;}
+.product-brand{font-family:var(--font-head);font-size:.72rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--red);margin-bottom:.25rem;}
+.product-name{font-family:var(--font-head);font-weight:700;font-size:1rem;text-transform:uppercase;letter-spacing:.03em;color:var(--white);margin-bottom:.5rem;line-height:1.2;}
+.product-sku{font-size:.72rem;color:var(--gray-muted);margin-bottom:.75rem;}
+.product-rating{display:flex;align-items:center;gap:.35rem;margin-bottom:.75rem;}
+.stars{color:var(--yellow);font-size:.8rem;}
+.review-count{font-size:.72rem;color:var(--gray-muted);}
+.product-price-row{display:flex;align-items:center;justify-content:space-between;gap:.5rem;}
+.price{font-family:var(--font-head);font-weight:800;font-size:1.3rem;color:var(--white);}
+.price-was{font-family:var(--font-head);font-size:.85rem;color:var(--gray-muted);text-decoration:line-through;}
+.add-btn{background:var(--red);border:none;color:white;border-radius:3px;padding:.4rem .8rem;font-family:var(--font-head);font-size:.8rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;transition:background .2s;white-space:nowrap;}
+.add-btn:hover{background:var(--red-dark);}
+.add-btn.added{background:var(--green);}
+
+/* ── DEAL BANNER ── */
+.deal-banner{background:linear-gradient(120deg,var(--red-dark),var(--red));border-radius:8px;padding:2.5rem;margin-bottom:3.5rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;position:relative;overflow:hidden;}
+.deal-banner::after{content:'SALE';position:absolute;right:-20px;top:-20px;font-family:var(--font-head);font-size:10rem;font-weight:900;color:rgba(0,0,0,.15);line-height:1;pointer-events:none;}
+.deal-banner h2{font-family:var(--font-head);font-weight:900;font-size:clamp(1.8rem,4vw,3rem);text-transform:uppercase;letter-spacing:.03em;line-height:1.05;}
+.deal-banner p{color:rgba(255,255,255,.8);font-size:1rem;margin-top:.5rem;}
+.deal-btn{background:white;color:var(--red-dark);border:none;padding:.9rem 2.2rem;font-family:var(--font-head);font-size:1.1rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;border-radius:4px;transition:opacity .2s;white-space:nowrap;}
+.deal-btn:hover{opacity:.9;}
+
+/* ── CATEGORIES ── */
+.cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:1rem;margin-bottom:3.5rem;}
+.cat-card{background:var(--gray-dark);border:1px solid var(--gray-mid);border-radius:6px;padding:1.5rem 1rem;text-align:center;cursor:pointer;transition:border-color .2s,background .2s;}
+.cat-card:hover{border-color:var(--red);background:rgba(192,57,43,.06);}
+.cat-icon{width:54px;height:54px;background:var(--gray-mid);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto .75rem;font-size:1.5rem;}
+.cat-card-name{font-family:var(--font-head);font-weight:700;font-size:.9rem;text-transform:uppercase;letter-spacing:.05em;}
+.cat-card-count{font-size:.78rem;color:var(--gray-muted);margin-top:.25rem;}
+
+/* ── FOOTER ── */
+footer{background:var(--gray-dark);border-top:3px solid var(--red);padding:3rem 2rem 1.5rem;margin-top:3rem;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2rem;max-width:1280px;margin:0 auto 2rem;}
+.footer-brand{font-family:var(--font-head);font-weight:900;font-size:1.6rem;text-transform:uppercase;letter-spacing:.04em;margin-bottom:.75rem;}
+.footer-brand span{color:var(--red);}
+.footer-desc{color:var(--gray-muted);font-size:.875rem;line-height:1.65;max-width:280px;}
+.footer-h{font-family:var(--font-head);font-weight:700;font-size:.85rem;text-transform:uppercase;letter-spacing:.12em;color:var(--red);margin-bottom:1rem;}
+.footer-links{list-style:none;}
+.footer-links li{margin-bottom:.55rem;}
+.footer-links a,.footer-links button{color:var(--gray-muted);text-decoration:none;font-size:.875rem;transition:color .2s;background:none;border:none;cursor:pointer;font-family:var(--font-body);padding:0;}
+.footer-links a:hover,.footer-links button:hover{color:var(--white);}
+.footer-bottom{max-width:1280px;margin:0 auto;border-top:1px solid var(--gray-mid);padding-top:1.25rem;display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;font-size:.78rem;color:var(--gray-muted);}
+
+/* ── TOAST ── */
+.toast{position:fixed;bottom:2rem;right:2rem;background:var(--gray-dark);border:1px solid var(--gray-mid);border-left:4px solid var(--red);border-radius:6px;padding:1rem 1.5rem;display:flex;align-items:center;gap:.75rem;z-index:9999;transform:translateY(120%);transition:transform .3s ease;box-shadow:0 8px 24px rgba(0,0,0,.5);font-family:var(--font-head);font-weight:600;font-size:.95rem;letter-spacing:.03em;text-transform:uppercase;max-width:340px;}
+.toast.show{transform:translateY(0);}
+.toast.green{border-left-color:var(--green);}
+.toast.blue{border-left-color:var(--blue);}
+
+/* ── MODAL OVERLAY ── */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:500;align-items:center;justify-content:center;padding:1rem;}
+.modal-overlay.open{display:flex;}
+.modal{background:var(--gray-dark);border:1px solid var(--gray-light);border-top:4px solid var(--red);border-radius:8px;width:100%;max-width:480px;max-height:90vh;overflow-y:auto;padding:2rem;position:relative;}
+.modal-close{position:absolute;top:1rem;right:1rem;background:none;border:none;color:var(--gray-muted);cursor:pointer;font-size:1.5rem;line-height:1;transition:color .2s;}
+.modal-close:hover{color:var(--white);}
+.modal-title{font-family:var(--font-head);font-weight:800;font-size:1.6rem;text-transform:uppercase;letter-spacing:.04em;margin-bottom:.5rem;}
+.modal-title span{color:var(--red);}
+.modal-subtitle{color:var(--gray-muted);font-size:.9rem;margin-bottom:1.5rem;}
+
+/* ── FORMS ── */
+.form-group{margin-bottom:1.2rem;}
+.form-label{display:block;font-family:var(--font-head);font-weight:700;font-size:.85rem;text-transform:uppercase;letter-spacing:.08em;color:var(--gray-muted);margin-bottom:.5rem;}
+.form-input{width:100%;background:var(--gray-mid);border:1px solid var(--gray-light);border-radius:4px;padding:.75rem 1rem;color:var(--white);font-family:var(--font-body);font-size:.95rem;outline:none;transition:border-color .2s;}
+.form-input:focus{border-color:var(--red);}
+.form-input::placeholder{color:var(--gray-muted);}
+.form-input.error{border-color:var(--red-light);}
+.form-input.success{border-color:var(--green);}
+.form-error{color:var(--red-light);font-size:.8rem;margin-top:.35rem;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.form-btn{width:100%;background:var(--red);color:white;border:none;padding:.9rem;font-family:var(--font-head);font-size:1.05rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;border-radius:4px;transition:background .2s;margin-top:.5rem;}
+.form-btn:hover{background:var(--red-dark);}
+.form-btn:disabled{opacity:.5;cursor:not-allowed;}
+.form-btn.green{background:var(--green);}
+.form-btn.green:hover{background:#219a52;}
+.form-link{color:var(--red);cursor:pointer;text-decoration:underline;font-size:.9rem;}
+.form-link:hover{color:var(--red-light);}
+.form-divider{text-align:center;color:var(--gray-muted);font-size:.85rem;margin:1.2rem 0;position:relative;}
+.form-divider::before{content:'';position:absolute;top:50%;left:0;right:0;border-top:1px solid var(--gray-light);}
+.form-divider span{background:var(--gray-dark);padding:0 .75rem;position:relative;}
+
+/* ── OTP BOXES ── */
+.otp-row{display:flex;gap:.75rem;justify-content:center;margin:1rem 0;}
+.otp-box{width:52px;height:56px;background:var(--gray-mid);border:2px solid var(--gray-light);border-radius:6px;text-align:center;font-size:1.5rem;font-weight:700;color:var(--white);font-family:var(--font-head);outline:none;transition:border-color .2s;}
+.otp-box:focus{border-color:var(--red);}
+.otp-box.filled{border-color:var(--green);}
+.otp-timer{text-align:center;color:var(--gray-muted);font-size:.85rem;margin-bottom:1rem;}
+.otp-timer span{color:var(--red);font-weight:700;}
+.resend-btn{background:none;border:none;color:var(--red);cursor:pointer;font-size:.85rem;text-decoration:underline;}
+.resend-btn:disabled{color:var(--gray-muted);text-decoration:none;cursor:not-allowed;}
+
+/* ── ACCOUNT PANEL ── */
+.account-tabs{display:flex;border-bottom:1px solid var(--gray-light);margin-bottom:1.5rem;}
+.account-tab{flex:1;background:none;border:none;padding:.75rem;font-family:var(--font-head);font-size:.95rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--gray-muted);cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-1px;transition:all .2s;}
+.account-tab.active{color:var(--red);border-bottom-color:var(--red);}
+
+/* ── CART MODAL ── */
+.cart-modal{max-width:600px;}
+.cart-empty{text-align:center;padding:3rem 1rem;color:var(--gray-muted);}
+.cart-empty-icon{font-size:4rem;margin-bottom:1rem;}
+.cart-item{display:flex;align-items:center;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--gray-mid);}
+.cart-item:last-child{border-bottom:none;}
+.cart-item-icon{width:56px;height:56px;background:var(--gray-mid);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:1.6rem;flex-shrink:0;}
+.cart-item-info{flex:1;}
+.cart-item-name{font-family:var(--font-head);font-weight:700;font-size:.95rem;text-transform:uppercase;}
+.cart-item-sku{font-size:.75rem;color:var(--gray-muted);}
+.cart-item-price{font-family:var(--font-head);font-weight:800;font-size:1.1rem;color:var(--white);}
+.cart-qty{display:flex;align-items:center;gap:.5rem;}
+.qty-btn{background:var(--gray-light);border:none;color:var(--white);width:28px;height:28px;border-radius:4px;cursor:pointer;font-size:1rem;font-weight:700;transition:background .2s;}
+.qty-btn:hover{background:var(--red);}
+.qty-num{font-family:var(--font-head);font-weight:700;font-size:1rem;min-width:24px;text-align:center;}
+.remove-btn{background:none;border:none;color:var(--gray-muted);cursor:pointer;font-size:1.2rem;transition:color .2s;padding:.25rem;}
+.remove-btn:hover{color:var(--red);}
+.cart-summary{background:var(--gray-mid);border-radius:6px;padding:1.25rem;margin-top:1rem;}
+.cart-summary-row{display:flex;justify-content:space-between;font-size:.9rem;margin-bottom:.5rem;color:var(--gray-muted);}
+.cart-summary-row.total{font-family:var(--font-head);font-weight:800;font-size:1.2rem;color:var(--white);border-top:1px solid var(--gray-light);padding-top:.75rem;margin-top:.5rem;}
+.coupon-row{display:flex;gap:.5rem;margin-top:1rem;}
+.coupon-input{flex:1;background:var(--gray-dark);border:1px solid var(--gray-light);border-radius:4px;padding:.6rem .9rem;color:var(--white);font-family:var(--font-body);font-size:.9rem;outline:none;}
+.coupon-input:focus{border-color:var(--red);}
+.coupon-btn{background:var(--gray-light);border:none;color:var(--white);padding:.6rem 1.2rem;border-radius:4px;cursor:pointer;font-family:var(--font-head);font-weight:700;font-size:.85rem;text-transform:uppercase;transition:background .2s;}
+.coupon-btn:hover{background:var(--red);}
+
+/* ── CHECKOUT ── */
+.checkout-steps{display:flex;gap:0;margin-bottom:2rem;border-bottom:2px solid var(--gray-light);}
+.checkout-step{flex:1;text-align:center;padding:.75rem .5rem;font-family:var(--font-head);font-size:.85rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gray-muted);position:relative;cursor:default;}
+.checkout-step.active{color:var(--red);}
+.checkout-step.done{color:var(--green);}
+.checkout-step::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:2px;background:transparent;transition:background .3s;}
+.checkout-step.active::after{background:var(--red);}
+.checkout-step.done::after{background:var(--green);}
+.checkout-step-num{display:block;width:28px;height:28px;border-radius:50%;background:var(--gray-light);color:var(--white);font-size:.85rem;font-weight:700;line-height:28px;margin:0 auto .4rem;transition:background .3s;}
+.checkout-step.active .checkout-step-num{background:var(--red);}
+.checkout-step.done .checkout-step-num{background:var(--green);}
+.checkout-panel{display:none;}
+.checkout-panel.active{display:block;}
+.payment-options{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-bottom:1rem;}
+.payment-option{background:var(--gray-mid);border:2px solid var(--gray-light);border-radius:6px;padding:.9rem 1rem;cursor:pointer;display:flex;align-items:center;gap:.75rem;transition:border-color .2s,background .2s;}
+.payment-option:hover{border-color:var(--red);}
+.payment-option.selected{border-color:var(--red);background:rgba(192,57,43,.08);}
+.payment-option input[type=radio]{accent-color:var(--red);}
+.payment-label{font-family:var(--font-head);font-weight:700;font-size:.9rem;text-transform:uppercase;}
+.payment-sub{font-size:.75rem;color:var(--gray-muted);}
+.order-success{text-align:center;padding:2rem 1rem;}
+.order-success-icon{font-size:4rem;margin-bottom:1rem;}
+.order-id{background:var(--gray-mid);border-radius:6px;padding:1rem;margin:1rem 0;font-family:var(--font-head);font-size:1.1rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;}
+
+/* ── PROFILE ── */
+.profile-avatar{width:80px;height:80px;background:var(--red);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2rem;margin:0 auto 1rem;font-weight:700;font-family:var(--font-head);}
+.profile-name{text-align:center;font-family:var(--font-head);font-weight:800;font-size:1.4rem;text-transform:uppercase;margin-bottom:.25rem;}
+.profile-phone{text-align:center;color:var(--gray-muted);font-size:.9rem;margin-bottom:1.5rem;}
+.order-history-item{background:var(--gray-mid);border-radius:6px;padding:1rem;margin-bottom:.75rem;display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;}
+.order-status{font-family:var(--font-head);font-weight:700;font-size:.8rem;text-transform:uppercase;letter-spacing:.08em;padding:.25rem .75rem;border-radius:100px;}
+.status-delivered{background:rgba(39,174,96,.15);color:var(--green);}
+.status-pending{background:rgba(243,156,18,.15);color:var(--yellow);}
+.status-processing{background:rgba(41,128,185,.15);color:var(--blue);}
+.wishlist-item{display:flex;align-items:center;gap:1rem;padding:.75rem 0;border-bottom:1px solid var(--gray-mid);}
+.wishlist-item:last-child{border-bottom:none;}
+
+/* ── ADDRESS CARD ── */
+.address-card{background:var(--gray-mid);border:1px solid var(--gray-light);border-radius:6px;padding:1rem;margin-bottom:.75rem;position:relative;}
+.address-card.default{border-color:var(--red);}
+.address-default-badge{position:absolute;top:.75rem;right:.75rem;background:var(--red);color:white;font-family:var(--font-head);font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding:.15rem .5rem;border-radius:100px;}
+.address-actions{display:flex;gap:.5rem;margin-top:.75rem;}
+.address-action-btn{background:none;border:1px solid var(--gray-light);color:var(--gray-muted);border-radius:4px;padding:.3rem .8rem;font-size:.8rem;cursor:pointer;transition:all .2s;font-family:var(--font-body);}
+.address-action-btn:hover{border-color:var(--red);color:var(--red);}
+
+/* ── PRODUCT DETAIL MODAL ── */
+.product-detail-modal{max-width:700px;}
+.product-detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;}
+.product-detail-img{height:220px;background:var(--gray-mid);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:5rem;}
+.product-detail-desc{color:var(--gray-muted);font-size:.9rem;margin:1rem 0;line-height:1.6;}
+.product-detail-spec{display:flex;justify-content:space-between;padding:.5rem 0;border-bottom:1px solid var(--gray-mid);font-size:.875rem;}
+.product-detail-spec:last-child{border-bottom:none;}
+.product-detail-spec-key{color:var(--gray-muted);}
+.stock-badge{display:inline-block;background:rgba(39,174,96,.15);color:var(--green);font-family:var(--font-head);font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding:.2rem .75rem;border-radius:100px;margin-bottom:.75rem;}
+.qty-selector{display:flex;align-items:center;gap:.75rem;margin:1rem 0;}
+.qty-selector-btn{background:var(--gray-mid);border:1px solid var(--gray-light);color:var(--white);width:36px;height:36px;border-radius:4px;cursor:pointer;font-size:1.2rem;font-weight:700;transition:background .2s;}
+.qty-selector-btn:hover{background:var(--red);border-color:var(--red);}
+.qty-selector-val{font-family:var(--font-head);font-weight:800;font-size:1.2rem;min-width:36px;text-align:center;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:768px){
+  .nav-links{display:none;}
+  .hero h1{font-size:3rem;}
+  .footer-grid{grid-template-columns:1fr 1fr;}
+  .trust-strip{grid-template-columns:1fr 1fr;}
+  .trust-item{border-right:none;border-bottom:1px solid var(--gray-mid);}
+  .form-row{grid-template-columns:1fr;}
+  .product-detail-grid{grid-template-columns:1fr;}
+  .payment-options{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ NAV ═══ -->
+<nav>
+  <a class="nav-logo" href="#"><span>T-Town</span> Autoparts</a>
+  <ul class="nav-links">
+    <li><a href="#categories">Categories</a></li>
+    <li><a href="#featured">Featured</a></li>
+    <li><a href="#deals">Deals</a></li>
+    <li><a href="#about">About</a></li>
+  </ul>
+  <div class="nav-actions">
+    <div class="nav-search">
+      <input type="text" placeholder="Search parts, brands, SKU..." id="searchInput"/>
+      <button onclick="handleSearch()">&#128269;</button>
+    </div>
+    <button class="nav-btn" id="accountNavBtn" onclick="openAccountModal()">&#128100; <span id="accountNavLabel">Sign In</span></button>
+    <button class="nav-btn" id="cartNavBtn" onclick="openCartModal()">
+      &#128722; Cart <span class="cart-count" id="cartCount">0</span>
+    </button>
+  </div>
+</nav>
+
+<!-- ═══ TICKER ═══ -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <span>Free shipping on orders over ₹999</span><span>OEM &amp; Aftermarket Parts</span>
+    <span>Same-day dispatch before 3PM</span><span>Call us: +91-98630-TTOWN</span>
+    <span>10,000+ parts in stock</span><span>Serving Tamenglong, Manipur &amp; Northeast India</span>
+    <span>Free shipping on orders over ₹999</span><span>OEM &amp; Aftermarket Parts</span>
+    <span>Same-day dispatch before 3PM</span><span>Call us: +91-98630-TTOWN</span>
+    <span>10,000+ parts in stock</span><span>Serving Tamenglong, Manipur &amp; Northeast India</span>
+  </div>
+</div>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero" id="home">
+  <div class="hero-content">
+    <div class="hero-tag">Tamenglong, Manipur's Trusted Parts Store</div>
+    <h1>Quality Parts.<br><span>Every Build.</span><br>Every Budget.</h1>
+    <p>From brake pads to engine mounts — T-Town Autoparts carries OEM and performance aftermarket parts for domestic and import vehicles. Fast shipping, expert support.</p>
+    <div class="hero-btns">
+      <button class="btn-primary" onclick="document.getElementById('featured').scrollIntoView({behavior:'smooth'})">Shop Now</button>
+      <button class="btn-secondary" onclick="document.getElementById('categories').scrollIntoView({behavior:'smooth'})">Browse Categories</button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FILTER BAR ═══ -->
+<div class="cat-bar">
+  <span class="cat-label">Filter:</span>
+  <button class="cat-pill active" onclick="filterParts(this,'all')">All Parts</button>
+  <button class="cat-pill" onclick="filterParts(this,'engine')">Engine</button>
+  <button class="cat-pill" onclick="filterParts(this,'brakes')">Brakes</button>
+  <button class="cat-pill" onclick="filterParts(this,'suspension')">Suspension</button>
+  <button class="cat-pill" onclick="filterParts(this,'electrical')">Electrical</button>
+  <button class="cat-pill" onclick="filterParts(this,'exhaust')">Exhaust</button>
+  <button class="cat-pill" onclick="filterParts(this,'filters')">Filters</button>
+</div>
+
+<!-- ═══ TRUST STRIP ═══ -->
+<div class="trust-strip">
+  <div class="trust-item"><div class="trust-icon">&#128666;</div><div><div class="trust-label">Free Shipping</div><div class="trust-sub">Orders over ₹999</div></div></div>
+  <div class="trust-item"><div class="trust-icon">&#9989;</div><div><div class="trust-label">OEM Guaranteed</div><div class="trust-sub">Verified genuine parts</div></div></div>
+  <div class="trust-item"><div class="trust-icon">&#128260;</div><div><div class="trust-label">Easy Returns</div><div class="trust-sub">30-day hassle-free</div></div></div>
+  <div class="trust-item"><div class="trust-icon">&#128241;</div><div><div class="trust-label">Expert Support</div><div class="trust-sub">Mon–Sat, 9AM–6PM IST</div></div></div>
+</div>
+
+<!-- ═══ MAIN ═══ -->
+<main class="main">
+
+  <!-- Search results banner -->
+  <div id="searchResultsBanner">
+    <span id="searchResultsText"></span>
+    <button class="see-all" onclick="clearSearch()">✕ Clear</button>
+  </div>
+
+  <!-- Categories -->
+  <section id="categories">
+    <div class="section-header"><div class="section-title">Shop by <span>Category</span></div></div>
+    <div class="cat-grid">
+      <div class="cat-card" onclick="filterByCategory('engine')"><div class="cat-icon">&#128296;</div><div class="cat-card-name">Engine Parts</div><div class="cat-card-count">2,400+ items</div></div>
+      <div class="cat-card" onclick="filterByCategory('brakes')"><div class="cat-icon">&#128197;</div><div class="cat-card-name">Brakes &amp; Rotors</div><div class="cat-card-count">1,800+ items</div></div>
+      <div class="cat-card" onclick="filterByCategory('suspension')"><div class="cat-icon">&#128260;</div><div class="cat-card-name">Suspension</div><div class="cat-card-count">1,200+ items</div></div>
+      <div class="cat-card" onclick="filterByCategory('electrical')"><div class="cat-icon">&#9889;</div><div class="cat-card-name">Electrical</div><div class="cat-card-count">980+ items</div></div>
+      <div class="cat-card" onclick="filterByCategory('filters')"><div class="cat-icon">&#128167;</div><div class="cat-card-name">Filters &amp; Fluids</div><div class="cat-card-count">760+ items</div></div>
+      <div class="cat-card" onclick="filterByCategory('exhaust')"><div class="cat-icon">&#128293;</div><div class="cat-card-name">Exhaust</div><div class="cat-card-count">540+ items</div></div>
+      <div class="cat-card" onclick="filterByCategory('body')"><div class="cat-icon">&#127959;</div><div class="cat-card-name">Body &amp; Trim</div><div class="cat-card-count">1,100+ items</div></div>
+      <div class="cat-card" onclick="filterByCategory('cooling')"><div class="cat-icon">&#10052;</div><div class="cat-card-name">Cooling System</div><div class="cat-card-count">430+ items</div></div>
+    </div>
+  </section>
+
+  <!-- Featured Products -->
+  <section id="featured">
+    <div class="section-header">
+      <div class="section-title">Featured <span>Products</span></div>
+      <button class="see-all" onclick="filterParts(document.querySelector('.cat-pill'),'all')">View All &rarr;</button>
+    </div>
+    <div class="product-grid" id="productGrid"></div>
+  </section>
+
+  <!-- Deal Banner -->
+  <div class="deal-banner" id="deals">
+    <div>
+      <h2>Summer Tune-Up<br>Sale — Up to 35% Off</h2>
+      <p>Stock up on filters, belts, and fluids before the heat hits. Limited time only.</p>
+    </div>
+    <button class="deal-btn" onclick="claimDeal()">Claim the Deal</button>
+  </div>
+
+  <!-- Bestsellers -->
+  <section>
+    <div class="section-header">
+      <div class="section-title">Best<span>sellers</span></div>
+      <button class="see-all" onclick="filterParts(document.querySelector('.cat-pill'),'all')">View All &rarr;</button>
+    </div>
+    <div class="product-grid" id="bestsellersGrid"></div>
+  </section>
+</main>
+
+<!-- ═══ FOOTER ═══ -->
+<footer id="about">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand"><span>T-Town</span> Autoparts</div>
+      <p class="footer-desc">Main Bazaar, Tamenglong, Manipur – 795141. We carry over 10,000 SKUs from the world's most trusted brands — all backed by our satisfaction guarantee.</p>
+    </div>
+    <div>
+      <div class="footer-h">Shop</div>
+      <ul class="footer-links">
+        <li><button onclick="filterParts(document.querySelector('.cat-pill'),'all')">All Products</button></li>
+        <li><button onclick="filterByCategory('engine')">Engine Parts</button></li>
+        <li><button onclick="filterByCategory('brakes')">Brakes</button></li>
+        <li><button onclick="filterByCategory('suspension')">Suspension</button></li>
+        <li><button onclick="filterByCategory('electrical')">Electrical</button></li>
+        <li><button onclick="filterByCategory('filters')">Filters &amp; Fluids</button></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-h">Account</div>
+      <ul class="footer-links">
+        <li><button onclick="openAccountModal()">Sign In / Register</button></li>
+        <li><button onclick="openAccountModal('orders')">My Orders</button></li>
+        <li><button onclick="openAccountModal('wishlist')">Wishlist</button></li>
+        <li><button onclick="openAccountModal('addresses')">Saved Addresses</button></li>
+        <li><button onclick="openCartModal()">My Cart</button></li>
+        <li><button onclick="openAccountModal('profile')">Edit Profile</button></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-h">Help</div>
+      <ul class="footer-links">
+        <li><button onclick="showToast('📦 Track your order with your Order ID','blue')">Order Status</button></li>
+        <li><button onclick="showToast('↩️ 30-day hassle-free returns at Main Bazaar','green')">Returns</button></li>
+        <li><button onclick="showToast('📞 Call +91-98630-TTOWN Mon–Sat 9AM–6PM','blue')">Contact Us</button></li>
+        <li><button onclick="showToast('📍 Main Bazaar, Tamenglong, Manipur – 795141','blue')">Find Us</button></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2025 T-Town Autoparts, Tamenglong, Manipur – 795141. All rights reserved.</span>
+    <span>UPI &middot; PhonePe &middot; GPay &middot; Paytm &middot; Net Banking &middot; COD</span>
+  </div>
+</footer>
+
+<!-- ═══ TOAST ═══ -->
+<div class="toast" id="toast"><span id="toastIcon">✅</span><span id="toastMsg">Done!</span></div>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- ═══ MODALS ═══ -->
+<!-- ══════════════════════════════════════════ -->
+
+<!-- Auth Modal -->
+<div class="modal-overlay" id="authModal">
+  <div class="modal" style="max-width:420px;">
+    <button class="modal-close" onclick="closeModal('authModal')">&#10005;</button>
+    <!-- Step 1: Phone -->
+    <div id="authStep1">
+      <div class="modal-title">Welcome to <span>T-Town</span></div>
+      <div class="modal-subtitle">Enter your mobile number to sign in or create an account</div>
+      <div class="form-group">
+        <label class="form-label">Mobile Number</label>
+        <div style="display:flex;gap:.5rem;">
+          <div style="background:var(--gray-mid);border:1px solid var(--gray-light);border-radius:4px;padding:.75rem .9rem;color:var(--gray-muted);font-size:.95rem;white-space:nowrap;">+91</div>
+          <input class="form-input" type="tel" id="authPhone" placeholder="98XXXXXXXX" maxlength="10" oninput="this.value=this.value.replace(/\D/g,'')"/>
+        </div>
+        <div class="form-error" id="authPhoneError"></div>
+      </div>
+      <button class="form-btn" onclick="sendOTP()">Send OTP</button>
+      <div style="font-size:.8rem;color:var(--gray-muted);margin-top:1rem;text-align:center;">By continuing, you agree to our Terms &amp; Privacy Policy</div>
+    </div>
+    <!-- Step 2: OTP -->
+    <div id="authStep2" style="display:none;">
+      <div class="modal-title">Verify <span>OTP</span></div>
+      <div class="modal-subtitle" id="otpSubtitle">OTP sent to +91 XXXXXXXXXX</div>
+      <div class="otp-row">
+        <input class="otp-box" type="text" maxlength="1" id="otp0" oninput="otpInput(0,this)" onkeydown="otpKey(0,event)"/>
+        <input class="otp-box" type="text" maxlength="1" id="otp1" oninput="otpInput(1,this)" onkeydown="otpKey(1,event)"/>
+        <input class="otp-box" type="text" maxlength="1" id="otp2" oninput="otpInput(2,this)" onkeydown="otpKey(2,event)"/>
+        <input class="otp-box" type="text" maxlength="1" id="otp3" oninput="otpInput(3,this)" onkeydown="otpKey(3,event)"/>
+        <input class="otp-box" type="text" maxlength="1" id="otp4" oninput="otpInput(4,this)" onkeydown="otpKey(4,event)"/>
+        <input class="otp-box" type="text" maxlength="1" id="otp5" oninput="otpInput(5,this)" onkeydown="otpKey(5,event)"/>
+      </div>
+      <div class="form-error" id="otpError" style="text-align:center;"></div>
+      <div class="otp-timer">Resend OTP in <span id="otpTimerVal">30</span>s &nbsp;<button class="resend-btn" id="resendBtn" disabled onclick="resendOTP()">Resend</button></div>
+      <button class="form-btn" id="verifyOtpBtn" onclick="verifyOTP()">Verify &amp; Continue</button>
+      <button style="background:none;border:none;color:var(--gray-muted);cursor:pointer;font-size:.85rem;margin-top:.75rem;width:100%;text-align:center;" onclick="document.getElementById('authStep2').style.display='none';document.getElementById('authStep1').style.display='block';">&#8592; Change Number</button>
+    </div>
+    <!-- Step 3: New User Details -->
+    <div id="authStep3" style="display:none;">
+      <div class="modal-title">Complete <span>Profile</span></div>
+      <div class="modal-subtitle">Just a few details to get you started</div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">First Name</label>
+          <input class="form-input" type="text" id="regFirstName" placeholder="Ranjit"/>
+          <div class="form-error" id="regFirstNameError"></div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Last Name</label>
+          <input class="form-input" type="text" id="regLastName" placeholder="Singh"/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Email (Optional)</label>
+        <input class="form-input" type="email" id="regEmail" placeholder="you@example.com"/>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Date of Birth (Optional)</label>
+        <input class="form-input" type="date" id="regDob"/>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Vehicle (Optional)</label>
+        <input class="form-input" type="text" id="regVehicle" placeholder="e.g. Maruti Swift 2020"/>
+      </div>
+      <button class="form-btn green" onclick="completeRegistration()">Create Account &#10003;</button>
+    </div>
+  </div>
+</div>
+
+<!-- Account / Profile Modal -->
+<div class="modal-overlay" id="accountModal">
+  <div class="modal" style="max-width:520px;">
+    <button class="modal-close" onclick="closeModal('accountModal')">&#10005;</button>
+    <div class="profile-avatar" id="profileAvatar">👤</div>
+    <div class="profile-name" id="profileName">My Account</div>
+    <div class="profile-phone" id="profilePhone"></div>
+    <div class="account-tabs">
+      <button class="account-tab active" onclick="switchAccountTab('orders',this)">Orders</button>
+      <button class="account-tab" onclick="switchAccountTab('wishlist',this)">Wishlist</button>
+      <button class="account-tab" onclick="switchAccountTab('addresses',this)">Addresses</button>
+      <button class="account-tab" onclick="switchAccountTab('profile',this)">Profile</button>
+    </div>
+    <!-- Orders -->
+    <div id="accountTabOrders" class="checkout-panel active">
+      <div id="orderHistoryList"></div>
+    </div>
+    <!-- Wishlist -->
+    <div id="accountTabWishlist" class="checkout-panel">
+      <div id="wishlistList"></div>
+    </div>
+    <!-- Addresses -->
+    <div id="accountTabAddresses" class="checkout-panel">
+      <div id="addressList"></div>
+      <button class="form-btn" style="margin-top:1rem;" onclick="openAddAddressModal()">+ Add New Address</button>
+    </div>
+    <!-- Profile Edit -->
+    <div id="accountTabProfile" class="checkout-panel">
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">First Name</label>
+          <input class="form-input" type="text" id="editFirstName"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Last Name</label>
+          <input class="form-input" type="text" id="editLastName"/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Email</label>
+        <input class="form-input" type="email" id="editEmail"/>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Date of Birth</label>
+        <input class="form-input" type="date" id="editDob"/>
+      </div>
+      <div class="form-group">
+        <label class="form-label">My Vehicle</label>
+        <input class="form-input" type="text" id="editVehicle"/>
+      </div>
+      <button class="form-btn" onclick="saveProfile()">Save Changes</button>
+      <button class="form-btn" style="background:var(--gray-mid);margin-top:.5rem;" onclick="signOut()">Sign Out</button>
+    </div>
+  </div>
+</div>
+
+<!-- Add Address Modal -->
+<div class="modal-overlay" id="addAddressModal">
+  <div class="modal" style="max-width:460px;">
+    <button class="modal-close" onclick="closeModal('addAddressModal')">&#10005;</button>
+    <div class="modal-title">Add <span>Address</span></div>
+    <div class="modal-subtitle">Delivery address for Tamenglong &amp; surrounding areas</div>
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">Full Name</label>
+        <input class="form-input" type="text" id="addrName" placeholder="Ranjit Singh"/>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Phone</label>
+        <input class="form-input" type="tel" id="addrPhone" placeholder="98XXXXXXXX" maxlength="10"/>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Address Line 1</label>
+      <input class="form-input" type="text" id="addrLine1" placeholder="House No., Street / Colony"/>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Address Line 2 (Optional)</label>
+      <input class="form-input" type="text" id="addrLine2" placeholder="Landmark, Near..."/>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">Town / Village</label>
+        <input class="form-input" type="text" id="addrCity" placeholder="Tamenglong" value="Tamenglong"/>
+      </div>
+      <div class="form-group">
+        <label class="form-label">PIN Code</label>
+        <input class="form-input" type="text" id="addrPin" placeholder="795141" value="795141" maxlength="6"/>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label">State</label>
+      <input class="form-input" type="text" id="addrState" value="Manipur" readonly/>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Address Type</label>
+      <select class="form-input" id="addrType">
+        <option value="Home">Home</option>
+        <option value="Work">Work</option>
+        <option value="Other">Other</option>
+      </select>
+    </div>
+    <div class="form-error" id="addrError"></div>
+    <button class="form-btn" onclick="saveAddress()">Save Address</button>
+  </div>
+</div>
+
+<!-- Cart Modal -->
+<div class="modal-overlay" id="cartModal">
+  <div class="modal cart-modal" style="max-width:600px;">
+    <button class="modal-close" onclick="closeModal('cartModal')">&#10005;</button>
+    <div class="modal-title">My <span>Cart</span></div>
+    <div id="cartContents"></div>
+    <div id="cartCheckoutBtn" style="display:none;margin-top:1rem;">
+      <div class="coupon-row">
+        <input class="coupon-input" type="text" id="couponInput" placeholder="Enter coupon code (try TTOWN10)"/>
+        <button class="coupon-btn" onclick="applyCoupon()">Apply</button>
+      </div>
+      <button class="form-btn" style="margin-top:1rem;" onclick="startCheckout()">Proceed to Checkout &#8594;</button>
+    </div>
+  </div>
+</div>
+
+<!-- Checkout Modal -->
+<div class="modal-overlay" id="checkoutModal">
+  <div class="modal" style="max-width:580px;">
+    <button class="modal-close" onclick="closeModal('checkoutModal')">&#10005;</button>
+    <div class="modal-title"><span>Checkout</span></div>
+    <div class="checkout-steps">
+      <div class="checkout-step active" id="cStep1"><span class="checkout-step-num">1</span>Address</div>
+      <div class="checkout-step" id="cStep2"><span class="checkout-step-num">2</span>Payment</div>
+      <div class="checkout-step" id="cStep3"><span class="checkout-step-num">3</span>Confirm</div>
+    </div>
+    <!-- Panel 1: Address -->
+    <div class="checkout-panel active" id="cPanel1">
+      <div id="checkoutAddressList"></div>
+      <button class="form-btn" style="background:var(--gray-mid);margin-bottom:.75rem;" onclick="openAddAddressFromCheckout()">+ Add New Address</button>
+      <button class="form-btn" id="continueToPaymentBtn" onclick="continueToPayment()">Continue to Payment &#8594;</button>
+    </div>
+    <!-- Panel 2: Payment -->
+    <div class="checkout-panel" id="cPanel2">
+      <div class="payment-options">
+        <label class="payment-option selected" onclick="selectPayment(this,'upi')">
+          <input type="radio" name="pay" value="upi" checked/><div><div class="payment-label">UPI</div><div class="payment-sub">GPay, PhonePe, Paytm</div></div>
+        </label>
+        <label class="payment-option" onclick="selectPayment(this,'cod')">
+          <input type="radio" name="pay" value="cod"/><div><div class="payment-label">Cash on Delivery</div><div class="payment-sub">Pay when delivered</div></div>
+        </label>
+        <label class="payment-option" onclick="selectPayment(this,'netbanking')">
+          <input type="radio" name="pay" value="netbanking"/><div><div class="payment-label">Net Banking</div><div class="payment-sub">All major banks</div></div>
+        </label>
+        <label class="payment-option" onclick="selectPayment(this,'card')">
+          <input type="radio" name="pay" value="card"/><div><div class="payment-label">Debit / Credit Card</div><div class="payment-sub">Visa, Mastercard, RuPay</div></div>
+        </label>
+      </div>
+      <div id="upiField" class="form-group">
+        <label class="form-label">UPI ID</label>
+        <input class="form-input" type="text" id="upiId" placeholder="yourname@upi"/>
+      </div>
+      <div id="cardFields" style="display:none;">
+        <div class="form-group"><label class="form-label">Card Number</label><input class="form-input" type="text" placeholder="XXXX XXXX XXXX XXXX" maxlength="19"/></div>
+        <div class="form-row">
+          <div class="form-group"><label class="form-label">Expiry</label><input class="form-input" type="text" placeholder="MM/YY" maxlength="5"/></div>
+          <div class="form-group"><label class="form-label">CVV</label><input class="form-input" type="text" placeholder="XXX" maxlength="3"/></div>
+        </div>
+      </div>
+      <div class="cart-summary" id="checkoutSummary"></div>
+      <button class="form-btn" style="margin-top:1rem;" onclick="placeOrder()">Place Order &#8594;</button>
+    </div>
+    <!-- Panel 3: Success -->
+    <div class="checkout-panel" id="cPanel3">
+      <div class="order-success">
+        <div class="order-success-icon">🎉</div>
+        <div class="modal-title"><span>Order Placed!</span></div>
+        <p style="color:var(--gray-muted);margin:.5rem 0 1rem;">Thank you for shopping with T-Town Autoparts!</p>
+        <div class="order-id" id="orderIdDisplay"></div>
+        <p style="color:var(--gray-muted);font-size:.875rem;">Your parts will be delivered to Tamenglong within 3–5 business days. You'll receive an SMS confirmation on your registered mobile.</p>
+        <button class="form-btn" style="margin-top:1.5rem;" onclick="closeModal('checkoutModal');openAccountModal('orders')">Track My Order</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Product Detail Modal -->
+<div class="modal-overlay" id="productModal">
+  <div class="modal product-detail-modal">
+    <button class="modal-close" onclick="closeModal('productModal')">&#10005;</button>
+    <div class="product-detail-grid">
+      <div class="product-detail-img" id="pDetailImg"></div>
+      <div>
+        <div class="product-brand" id="pDetailBrand"></div>
+        <div class="modal-title" id="pDetailName" style="font-size:1.4rem;"></div>
+        <div class="product-sku" id="pDetailSku" style="margin:.5rem 0;"></div>
+        <div class="stock-badge">In Stock</div>
+        <div style="display:flex;align-items:baseline;gap:.75rem;margin:.5rem 0;">
+          <div class="price" id="pDetailPrice" style="font-size:1.7rem;"></div>
+          <div class="price-was" id="pDetailWas"></div>
+        </div>
+        <div class="product-rating" id="pDetailRating"></div>
+        <div class="product-detail-desc" id="pDetailDesc"></div>
+        <div class="qty-selector">
+          <button class="qty-selector-btn" onclick="changeDetailQty(-1)">−</button>
+          <span class="qty-selector-val" id="detailQty">1</span>
+          <button class="qty-selector-btn" onclick="changeDetailQty(1)">+</button>
+          <span style="font-size:.85rem;color:var(--gray-muted);margin-left:.5rem;">units</span>
+        </div>
+        <button class="form-btn" style="margin-top:.5rem;" id="pDetailAddBtn" onclick="addToCartFromDetail()">Add to Cart 🛒</button>
+        <button class="form-btn" style="background:var(--gray-mid);margin-top:.5rem;" onclick="addToWishlist()">♡ Add to Wishlist</button>
+      </div>
+    </div>
+    <div style="margin-top:1.5rem;border-top:1px solid var(--gray-mid);padding-top:1.5rem;">
+      <div style="font-family:var(--font-head);font-weight:700;font-size:1rem;text-transform:uppercase;letter-spacing:.05em;color:var(--red);margin-bottom:.75rem;">Specifications</div>
+      <div id="pDetailSpecs"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════ -->
+<script>
+// ═══════════════ IN-MEMORY STORE (sandbox safe) ═══════════════
+const usersDB={};
+
+// ═══════════════ DATA ═══════════════
+const allProducts=[
+  {id:1,brand:'ACDelco',name:'Premium Brake Pads',sku:'ACD-BP-4412',price:4199,was:5499,stars:5,reviews:312,badge:'Sale',badgeCls:'badge-sale',cat:'brakes',icon:'🛑',
+   desc:'High-performance semi-metallic brake pads for smooth, quiet stopping power. Compatible with most Indian hatchbacks and sedans.',
+   specs:[['Material','Semi-Metallic'],['Axle','Front & Rear'],['Warranty','12 months'],['Fit','Universal – check SKU chart']]},
+  {id:2,brand:'Bosch',name:'Platinum Spark Plugs (Set/4)',sku:'BSH-SP-8801',price:2450,was:null,stars:5,reviews:876,badge:'Best Seller',badgeCls:'',cat:'engine',icon:'⚡',
+   desc:'Bosch Platinum spark plugs deliver reliable ignition performance, improved fuel economy and reduced emissions for petrol engines.',
+   specs:[['Thread Size','M14 x 1.25'],['Gap','0.8mm'],['Heat Range','6'],['Quantity','Set of 4']]},
+  {id:3,brand:'Monroe',name:'OESpectrum Strut Assembly',sku:'MNR-SA-7720',price:10800,was:13500,stars:4,reviews:204,badge:'Sale',badgeCls:'badge-sale',cat:'suspension',icon:'🔩',
+   desc:'OEM-matched strut assembly for superior ride comfort on Northeast India terrain. No modifications needed.',
+   specs:[['Type','Complete Strut'],['Position','Front Left/Right'],['Spring Included','Yes'],['Warranty','18 months']]},
+  {id:4,brand:'Denso',name:'OEM O2 Sensor Upstream',sku:'DNS-O2-2291',price:5650,was:null,stars:4,reviews:141,badge:null,badgeCls:'',cat:'electrical',icon:'🔌',
+   desc:'Factory-equivalent upstream oxygen sensor. Restores fuel efficiency and reduces check-engine light issues.',
+   specs:[['Type','Wideband O2'],['Position','Upstream'],['Wire Count','4-wire'],['Connector','OEM Match']]},
+  {id:5,brand:'K&N',name:'High-Flow Air Filter',sku:'KN-AF-33-2300',price:4999,was:null,stars:5,reviews:2140,badge:'Top Rated',badgeCls:'',cat:'filters',icon:'💨',
+   desc:'Washable & reusable oiled cotton gauze filter. Increases airflow by up to 50% for better throttle response.',
+   specs:[['Type','Oiled Cotton'],['Reusable','Yes'],['Warranty','10 years / 1M km'],['Maintenance','Every 50,000 km']]},
+  {id:6,brand:'Walker',name:'Direct-Fit Catalytic Converter',sku:'WLK-CC-15634',price:15800,was:19200,stars:4,reviews:89,badge:'Sale',badgeCls:'badge-sale',cat:'exhaust',icon:'🔥',
+   desc:'Bolt-on catalytic converter that meets BS6 emission standards. Stainless-steel housing for longevity.',
+   specs:[['Standard','BS6 / EURO 6'],['Shell','409 Stainless Steel'],['Cell Density','400 CPSI'],['Warranty','24 months']]},
+  {id:7,brand:'Motorcraft',name:'Synthetic Blend Motor Oil 5W-30',sku:'MTC-OIL-XO5W30',price:2950,was:null,stars:5,reviews:1430,badge:'New',badgeCls:'',cat:'filters',icon:'🛢️',
+   desc:'Specially formulated for Indian driving conditions — city stop-start traffic and high summer temperatures in Manipur.',
+   specs:[['Viscosity','5W-30'],['Type','Synthetic Blend'],['Volume','4 Litres'],['API Rating','SN Plus']]},
+  {id:8,brand:'Gates',name:'Timing Belt Kit',sku:'GTS-TB-TCK307',price:7450,was:9200,stars:4,reviews:317,badge:'Sale',badgeCls:'badge-sale',cat:'engine',icon:'⚙️',
+   desc:'Complete timing belt kit includes belt, tensioner and idler pulley. One kit — complete replacement in one go.',
+   specs:[['Includes','Belt + Tensioner + Idler'],['Material','HNBR Rubber'],['OEM Match','Yes'],['Interval','60,000–80,000 km']]},
+];
+const allBestsellers=[
+  {id:9,brand:'Brembo',name:'Sport Brake Rotor Front',sku:'BRM-BR-09A2591N',price:6550,was:null,stars:5,reviews:540,badge:'Best Seller',badgeCls:'',cat:'brakes',icon:'🛑',
+   desc:'Cross-drilled and slotted brake rotor for improved heat dissipation. Dramatic stopping power upgrade.',
+   specs:[['Type','Cross-Drilled + Slotted'],['Diameter','256mm'],['Position','Front'],['Coating','E-Coating']]},
+  {id:10,brand:'NGK',name:'Iridium IX Spark Plug',sku:'NGK-SP-6418',price:999,was:null,stars:5,reviews:3200,badge:'Top Rated',badgeCls:'',cat:'engine',icon:'⚡',
+   desc:'Fine-wire iridium tip for precise ignition. Lasts up to 4x longer than standard copper plugs.',
+   specs:[['Tip Material','Iridium'],['Ground Electrode','Tapered Cut'],['Gap','0.9mm'],['Lifespan','80,000 km']]},
+  {id:11,brand:'Bilstein',name:'B4 Shock Absorber Rear',sku:'BIL-SH-22-147564',price:9950,was:12100,stars:5,reviews:278,badge:'Sale',badgeCls:'badge-sale',cat:'suspension',icon:'🔩',
+   desc:'OEM-replacement shock absorber tuned for comfort on uneven Manipur roads. Monotube design.',
+   specs:[['Type','Monotube'],['Position','Rear'],['Gas','Nitrogen'],['Warranty','24 months']]},
+  {id:12,brand:'Duralast',name:'Battery 51R-DL Group 51R',sku:'DRL-BAT-51R',price:12499,was:null,stars:4,reviews:621,badge:null,badgeCls:'',cat:'electrical',icon:'🔋',
+   desc:'AGM maintenance-free battery. Superior cold-cranking amps for reliable starts even in Manipur winters.',
+   specs:[['Type','AGM / Maintenance Free'],['CCA','500A'],['Capacity','45Ah'],['Warranty','36 months']]},
+];
+
+// ═══════════════ APP STATE ═══════════════
+let cart=[];           // [{...product, qty}]
+let wishlist=[];       // [product ids]
+let currentUser=null;  // null | {phone,firstName,lastName,email,dob,vehicle,addresses:[],orders:[]}
+let otpGenerated='';
+let otpTimer=null;
+let selectedAddressIdx=0;
+let selectedPayment='upi';
+let couponApplied=false;
+let currentDetailProduct=null;
+let detailQty=1;
+let pendingAccountTab=null;
+
+// ═══════════════ TOAST ═══════════════
+function showToast(msg,type='red'){
+  const t=document.getElementById('toast');
+  const icons={red:'🔔',green:'✅',blue:'ℹ️'};
+  document.getElementById('toastIcon').textContent=icons[type]||'🔔';
+  document.getElementById('toastMsg').textContent=msg;
+  t.className='toast show '+(type!=='red'?type:'');
+  clearTimeout(t._t);
+  t._t=setTimeout(()=>t.classList.remove('show'),3000);
+}
+
+// ═══════════════ MODAL HELPERS ═══════════════
+function openModal(id){document.getElementById(id).classList.add('open');document.body.style.overflow='hidden';}
+function closeModal(id){document.getElementById(id).classList.remove('open');document.body.style.overflow='';}
+
+// Close on overlay click
+document.querySelectorAll('.modal-overlay').forEach(o=>{
+  o.addEventListener('click',e=>{if(e.target===o)closeModal(o.id);});
+});
+
+// ═══════════════ RENDER PRODUCTS ═══════════════
+function starsHtml(n){return '★'.repeat(n)+'☆'.repeat(5-n);}
+function rupee(n){return '₹'+n.toLocaleString('en-IN');}
+
+function renderCards(items,gridId){
+  document.getElementById(gridId).innerHTML=items.map(p=>`
+    <div class="product-card" data-cat="${p.cat}" onclick="openProductDetail(${p.id})">
+      ${p.badge?`<div class="product-badge ${p.badgeCls}">${p.badge}</div>`:''}
+      <div class="product-img"><span style="font-size:3rem">${p.icon}</span></div>
+      <div class="product-info">
+        <div class="product-brand">${p.brand}</div>
+        <div class="product-name">${p.name}</div>
+        <div class="product-sku">SKU: ${p.sku}</div>
+        <div class="product-rating">
+          <span class="stars">${starsHtml(p.stars)}</span>
+          <span class="review-count">(${p.reviews.toLocaleString()})</span>
+        </div>
+        <div class="product-price-row">
+          <div>
+            <span class="price">${rupee(p.price)}</span>
+            ${p.was?`<span class="price-was"> ${rupee(p.was)}</span>`:''}
+          </div>
+          <button class="add-btn" id="addBtn${p.id}" onclick="event.stopPropagation();addToCart(${p.id})">+ Add</button>
+        </div>
+      </div>
+    </div>`).join('');
+}
+renderCards(allProducts,'productGrid');
+renderCards(allBestsellers,'bestsellersGrid');
+
+// ═══════════════ PRODUCT DETAIL ═══════════════
+function openProductDetail(id){
+  const p=[...allProducts,...allBestsellers].find(x=>x.id===id);
+  if(!p)return;
+  currentDetailProduct=p;
+  detailQty=1;
+  document.getElementById('detailQty').textContent=1;
+  document.getElementById('pDetailImg').textContent=p.icon;
+  document.getElementById('pDetailImg').style.fontSize='5rem';
+  document.getElementById('pDetailBrand').textContent=p.brand;
+  document.getElementById('pDetailName').textContent=p.name;
+  document.getElementById('pDetailSku').textContent='SKU: '+p.sku;
+  document.getElementById('pDetailPrice').textContent=rupee(p.price);
+  document.getElementById('pDetailWas').textContent=p.was?rupee(p.was):'';
+  document.getElementById('pDetailRating').innerHTML=`<span class="stars">${starsHtml(p.stars)}</span><span class="review-count">(${p.reviews.toLocaleString()} reviews)</span>`;
+  document.getElementById('pDetailDesc').textContent=p.desc||'';
+  document.getElementById('pDetailSpecs').innerHTML=(p.specs||[]).map(([k,v])=>`
+    <div class="product-detail-spec"><span class="product-detail-spec-key">${k}</span><span>${v}</span></div>`).join('');
+  const inCart=cart.find(c=>c.id===p.id);
+  const btn=document.getElementById('pDetailAddBtn');
+  btn.textContent=inCart?'✅ Added — Add More':'Add to Cart 🛒';
+  openModal('productModal');
+}
+function changeDetailQty(d){
+  detailQty=Math.max(1,detailQty+d);
+  document.getElementById('detailQty').textContent=detailQty;
+}
+function addToCartFromDetail(){
+  if(!currentDetailProduct)return;
+  for(let i=0;i<detailQty;i++) addToCartById(currentDetailProduct.id,true);
+  showToast(`${currentDetailProduct.name.substring(0,25)} ×${detailQty} added!`,'green');
+  closeModal('productModal');
+}
+function addToWishlist(){
+  if(!currentDetailProduct)return;
+  if(!currentUser){showToast('Sign in to save to Wishlist','blue');closeModal('productModal');openAccountModal();return;}
+  if(!wishlist.includes(currentDetailProduct.id)){
+    wishlist.push(currentDetailProduct.id);
+    showToast(`Added to Wishlist: ${currentDetailProduct.name.substring(0,22)}`,'green');
+  } else {
+    showToast('Already in your Wishlist!');
+  }
+}
+
+// ═══════════════ CART ═══════════════
+function addToCartById(id,silent=false){
+  const p=[...allProducts,...allBestsellers].find(x=>x.id===id);
+  if(!p)return;
+  const ex=cart.find(c=>c.id===id);
+  if(ex)ex.qty++;
+  else cart.push({...p,qty:1});
+  updateCartCount();
+  const btn=document.getElementById('addBtn'+id);
+  if(btn){btn.textContent='✓ Added';btn.classList.add('added');setTimeout(()=>{btn.textContent='+ Add';btn.classList.remove('added');},1500);}
+  if(!silent)showToast(`${p.name.substring(0,25)} added to cart!`,'green');
+}
+function addToCart(id){addToCartById(id);}
+function updateCartCount(){document.getElementById('cartCount').textContent=cart.reduce((s,c)=>s+c.qty,0);}
+
+function cartTotal(){
+  let sub=cart.reduce((s,c)=>s+c.price*c.qty,0);
+  let disc=couponApplied?Math.round(sub*.1):0;
+  let ship=sub>=999?0:99;
+  return{sub,disc,ship,total:sub-disc+ship};
+}
+
+function renderCart(){
+  const el=document.getElementById('cartContents');
+  const btn=document.getElementById('cartCheckoutBtn');
+  if(cart.length===0){
+    el.innerHTML=`<div class="cart-empty"><div class="cart-empty-icon">🛒</div><div style="font-family:var(--font-head);font-size:1.2rem;font-weight:700;text-transform:uppercase;margin-bottom:.5rem;">Your Cart is Empty</div><p style="color:var(--gray-muted);font-size:.9rem;">Browse products and add items to get started.</p></div>`;
+    btn.style.display='none';
+    return;
+  }
+  const t=cartTotal();
+  el.innerHTML=cart.map(c=>`
+    <div class="cart-item">
+      <div class="cart-item-icon">${c.icon}</div>
+      <div class="cart-item-info">
+        <div class="cart-item-name">${c.name}</div>
+        <div class="cart-item-sku">SKU: ${c.sku}</div>
+        <div class="cart-item-price">${rupee(c.price*c.qty)}</div>
+      </div>
+      <div class="cart-qty">
+        <button class="qty-btn" onclick="changeCartQty(${c.id},-1)">−</button>
+        <span class="qty-num">${c.qty}</span>
+        <button class="qty-btn" onclick="changeCartQty(${c.id},1)">+</button>
+      </div>
+      <button class="remove-btn" onclick="removeFromCart(${c.id})" title="Remove">✕</button>
+    </div>`).join('');
+  const summary=`
+    <div class="cart-summary">
+      <div class="cart-summary-row"><span>Subtotal</span><span>${rupee(t.sub)}</span></div>
+      ${t.disc?`<div class="cart-summary-row" style="color:var(--green);"><span>Coupon (TTOWN10)</span><span>−${rupee(t.disc)}</span></div>`:''}
+      <div class="cart-summary-row"><span>Delivery</span><span>${t.ship===0?'<span style="color:var(--green);">FREE</span>':rupee(t.ship)}</span></div>
+      <div class="cart-summary-row total"><span>Total</span><span>${rupee(t.total)}</span></div>
+    </div>`;
+  el.innerHTML+=summary;
+  btn.style.display='block';
+}
+
+function changeCartQty(id,d){
+  const it=cart.find(c=>c.id===id);
+  if(!it)return;
+  it.qty+=d;
+  if(it.qty<=0)cart=cart.filter(c=>c.id!==id);
+  updateCartCount();
+  renderCart();
+}
+function removeFromCart(id){
+  cart=cart.filter(c=>c.id!==id);
+  updateCartCount();
+  renderCart();
+  showToast('Item removed from cart');
+}
+function openCartModal(){renderCart();openModal('cartModal');}
+
+function applyCoupon(){
+  const v=document.getElementById('couponInput').value.trim().toUpperCase();
+  if(v==='TTOWN10'){couponApplied=true;renderCart();showToast('10% coupon applied!','green');}
+  else showToast('Invalid coupon code');
+}
+
+// ═══════════════ AUTH ═══════════════
+function openAccountModal(tab){
+  if(!currentUser){pendingAccountTab=tab||null;openModal('authModal');return;}
+  openModal('accountModal');
+  renderAccountModal();
+  if(tab)setTimeout(()=>{
+    const tabs={'orders':0,'wishlist':1,'addresses':2,'profile':3};
+    const idx=tabs[tab];
+    if(idx!==undefined){
+      const allTabs=document.querySelectorAll('.account-tab');
+      switchAccountTab(tab,allTabs[idx]);
+    }
+  },50);
+}
+function closeAuth(){closeModal('authModal');}
+
+function sendOTP(){
+  const ph=document.getElementById('authPhone').value.trim();
+  const err=document.getElementById('authPhoneError');
+  if(ph.length!==10){err.textContent='Please enter a valid 10-digit mobile number.';return;}
+  err.textContent='';
+  // Generate 6-digit OTP
+  otpGenerated=String(Math.floor(100000+Math.random()*900000));
+  console.log('OTP (demo):', otpGenerated); // visible in console for testing
+  document.getElementById('otpSubtitle').textContent=`OTP sent to +91 ${ph.substring(0,3)}XXXXXXX (demo OTP shown in browser console)`;
+  document.getElementById('authStep1').style.display='none';
+  document.getElementById('authStep2').style.display='block';
+  // Pre-fill OTP for demo
+  setTimeout(()=>{
+    const digits=otpGenerated.split('');
+    digits.forEach((d,i)=>{
+      const box=document.getElementById('otp'+i);
+      box.value=d;box.classList.add('filled');
+    });
+  },1500);
+  startOTPTimer();
+}
+
+function startOTPTimer(){
+  let t=30;
+  document.getElementById('resendBtn').disabled=true;
+  clearInterval(otpTimer);
+  otpTimer=setInterval(()=>{
+    t--;
+    document.getElementById('otpTimerVal').textContent=t;
+    if(t<=0){clearInterval(otpTimer);document.getElementById('resendBtn').disabled=false;}
+  },1000);
+}
+function resendOTP(){
+  otpGenerated=String(Math.floor(100000+Math.random()*900000));
+  console.log('New OTP (demo):', otpGenerated);
+  showToast('OTP resent!','blue');
+  startOTPTimer();
+  for(let i=0;i<6;i++){const b=document.getElementById('otp'+i);b.value='';b.classList.remove('filled');}
+}
+
+function otpInput(idx,el){
+  el.value=el.value.replace(/\D/g,'');
+  if(el.value.length===1){el.classList.add('filled');if(idx<5)document.getElementById('otp'+(idx+1)).focus();}
+  else el.classList.remove('filled');
+}
+function otpKey(idx,e){if(e.key==='Backspace'&&!document.getElementById('otp'+idx).value&&idx>0)document.getElementById('otp'+(idx-1)).focus();}
+
+function verifyOTP(){
+  const entered=[0,1,2,3,4,5].map(i=>document.getElementById('otp'+i).value).join('');
+  const err=document.getElementById('otpError');
+  if(entered.length!==6){err.textContent='Please enter the complete 6-digit OTP.';return;}
+  if(entered!==otpGenerated){err.textContent='Incorrect OTP. Please try again.';return;}
+  err.textContent='';
+  clearInterval(otpTimer);
+  const phone=document.getElementById('authPhone').value.trim();
+  // Check if user exists
+  const existing=usersDB[phone]||null;
+  if(existing){
+    currentUser={...existing};
+    loginSuccess();
+  } else {
+    document.getElementById('authStep2').style.display='none';
+    document.getElementById('authStep3').style.display='block';
+  }
+}
+
+function completeRegistration(){
+  const fn=document.getElementById('regFirstName').value.trim();
+  const ln=document.getElementById('regLastName').value.trim();
+  const err=document.getElementById('regFirstNameError');
+  if(!fn){err.textContent='First name is required.';return;}
+  err.textContent='';
+  const phone=document.getElementById('authPhone').value.trim();
+  currentUser={
+    phone,firstName:fn,lastName:ln,
+    email:document.getElementById('regEmail').value.trim(),
+    dob:document.getElementById('regDob').value,
+    vehicle:document.getElementById('regVehicle').value.trim(),
+    addresses:[{name:fn+' '+ln,phone,line1:'Main Bazaar',line2:'',city:'Tamenglong',pin:'795141',state:'Manipur',type:'Home',isDefault:true}],
+    orders:[]
+  };
+  saveUserData();
+  loginSuccess();
+}
+
+function loginSuccess(){
+  closeModal('authModal');
+  document.getElementById('accountNavLabel').textContent=currentUser.firstName||'Account';
+  document.getElementById('accountNavBtn').classList.add('active');
+  showToast(`Welcome back, ${currentUser.firstName}! 👋`,'green');
+  if(pendingAccountTab){openAccountModal(pendingAccountTab);pendingAccountTab=null;}
+}
+
+function saveUserData(){
+  usersDB[currentUser.phone]=currentUser;
+}
+
+function signOut(){
+  currentUser=null;
+  document.getElementById('accountNavLabel').textContent='Sign In';
+  document.getElementById('accountNavBtn').classList.remove('active');
+  closeModal('accountModal');
+  showToast('Signed out successfully');
+}
+
+// ═══════════════ ACCOUNT TABS ═══════════════
+function renderAccountModal(){
+  if(!currentUser)return;
+  const init=(currentUser.firstName||'?')[0].toUpperCase();
+  document.getElementById('profileAvatar').textContent=init;
+  document.getElementById('profileName').textContent=(currentUser.firstName+' '+currentUser.lastName).trim()||'My Account';
+  document.getElementById('profilePhone').textContent='+91 '+currentUser.phone;
+  // Pre-fill edit form
+  document.getElementById('editFirstName').value=currentUser.firstName||'';
+  document.getElementById('editLastName').value=currentUser.lastName||'';
+  document.getElementById('editEmail').value=currentUser.email||'';
+  document.getElementById('editDob').value=currentUser.dob||'';
+  document.getElementById('editVehicle').value=currentUser.vehicle||'';
+  renderOrders();renderWishlistPanel();renderAddressPanel();
+}
+
+function switchAccountTab(name,btn){
+  document.querySelectorAll('.account-tab').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('#accountModal .checkout-panel').forEach(p=>p.classList.remove('active'));
+  document.getElementById('accountTab'+name.charAt(0).toUpperCase()+name.slice(1)).classList.add('active');
+}
+
+function renderOrders(){
+  const el=document.getElementById('orderHistoryList');
+  if(!currentUser||!currentUser.orders||!currentUser.orders.length){
+    el.innerHTML=`<div style="text-align:center;padding:2rem;color:var(--gray-muted);">No orders yet.<br><button class="form-link" onclick="closeModal('accountModal')">Start Shopping →</button></div>`;
+    return;
+  }
+  el.innerHTML=currentUser.orders.map(o=>`
+    <div class="order-history-item">
+      <div>
+        <div style="font-family:var(--font-head);font-weight:700;font-size:.95rem;text-transform:uppercase;">${o.id}</div>
+        <div style="font-size:.8rem;color:var(--gray-muted);">${o.date} &nbsp;·&nbsp; ${o.items} item(s)</div>
+        <div style="font-family:var(--font-head);font-weight:700;margin-top:.25rem;">${rupee(o.total)}</div>
+      </div>
+      <span class="order-status ${o.statusCls}">${o.status}</span>
+    </div>`).join('');
+}
+
+function renderWishlistPanel(){
+  const el=document.getElementById('wishlistList');
+  const items=[...allProducts,...allBestsellers].filter(p=>wishlist.includes(p.id));
+  if(!items.length){
+    el.innerHTML=`<div style="text-align:center;padding:2rem;color:var(--gray-muted);">No items in wishlist.<br>Browse products and click ♡ to save.</div>`;
+    return;
+  }
+  el.innerHTML=items.map(p=>`
+    <div class="wishlist-item">
+      <div style="font-size:1.8rem;width:44px;text-align:center;">${p.icon}</div>
+      <div style="flex:1;">
+        <div style="font-family:var(--font-head);font-weight:700;font-size:.95rem;text-transform:uppercase;">${p.name}</div>
+        <div style="font-family:var(--font-head);font-weight:800;font-size:1.05rem;color:var(--red);">${rupee(p.price)}</div>
+      </div>
+      <button class="add-btn" onclick="addToCartById(${p.id});showToast('${p.name.substring(0,18)} added!','green')">+ Cart</button>
+      <button class="remove-btn" onclick="removeFromWishlist(${p.id})" style="margin-left:.5rem;">✕</button>
+    </div>`).join('');
+}
+function removeFromWishlist(id){
+  wishlist=wishlist.filter(x=>x!==id);
+  renderWishlistPanel();
+  showToast('Removed from wishlist');
+}
+
+function renderAddressPanel(){
+  const el=document.getElementById('addressList');
+  if(!currentUser.addresses||!currentUser.addresses.length){
+    el.innerHTML=`<div style="color:var(--gray-muted);text-align:center;padding:1rem;">No saved addresses.</div>`;
+    return;
+  }
+  el.innerHTML=currentUser.addresses.map((a,i)=>`
+    <div class="address-card ${a.isDefault?'default':''}">
+      ${a.isDefault?`<div class="address-default-badge">Default</div>`:''}
+      <div style="font-family:var(--font-head);font-weight:700;font-size:1rem;text-transform:uppercase;">${a.name} <span style="color:var(--gray-muted);font-size:.8rem;">(${a.type})</span></div>
+      <div style="font-size:.875rem;color:var(--gray-muted);margin-top:.25rem;">${a.line1}${a.line2?', '+a.line2:''}, ${a.city}, ${a.state} – ${a.pin}</div>
+      <div style="font-size:.875rem;color:var(--gray-muted);">📞 +91 ${a.phone}</div>
+      <div class="address-actions">
+        ${!a.isDefault?`<button class="address-action-btn" onclick="setDefaultAddress(${i})">Set Default</button>`:''}
+        <button class="address-action-btn" onclick="deleteAddress(${i})">Remove</button>
+      </div>
+    </div>`).join('');
+}
+function setDefaultAddress(idx){
+  currentUser.addresses.forEach((a,i)=>a.isDefault=(i===idx));
+  saveUserData();renderAddressPanel();showToast('Default address updated','green');
+}
+function deleteAddress(idx){
+  currentUser.addresses.splice(idx,1);
+  if(currentUser.addresses.length&&!currentUser.addresses.some(a=>a.isDefault))currentUser.addresses[0].isDefault=true;
+  saveUserData();renderAddressPanel();showToast('Address removed');
+}
+
+function saveProfile(){
+  currentUser.firstName=document.getElementById('editFirstName').value.trim();
+  currentUser.lastName=document.getElementById('editLastName').value.trim();
+  currentUser.email=document.getElementById('editEmail').value.trim();
+  currentUser.dob=document.getElementById('editDob').value;
+  currentUser.vehicle=document.getElementById('editVehicle').value.trim();
+  saveUserData();renderAccountModal();
+  document.getElementById('accountNavLabel').textContent=currentUser.firstName||'Account';
+  showToast('Profile updated!','green');
+}
+
+// ═══════════════ ADDRESS ═══════════════
+function openAddAddressModal(){openModal('addAddressModal');}
+function openAddAddressFromCheckout(){closeModal('addAddressModal');openModal('addAddressModal');}
+
+function saveAddress(){
+  const name=document.getElementById('addrName').value.trim();
+  const phone=document.getElementById('addrPhone').value.trim();
+  const line1=document.getElementById('addrLine1').value.trim();
+  const city=document.getElementById('addrCity').value.trim();
+  const pin=document.getElementById('addrPin').value.trim();
+  const err=document.getElementById('addrError');
+  if(!name||!phone||!line1||!city||!pin){err.textContent='Please fill in all required fields.';return;}
+  if(phone.length!==10){err.textContent='Enter a valid 10-digit phone number.';return;}
+  if(pin.length!==6){err.textContent='Enter a valid 6-digit PIN code.';return;}
+  err.textContent='';
+  if(!currentUser){showToast('Please sign in first','blue');closeModal('addAddressModal');openAccountModal();return;}
+  const addr={
+    name,phone,
+    line1,line2:document.getElementById('addrLine2').value.trim(),
+    city,state:'Manipur',pin,
+    type:document.getElementById('addrType').value,
+    isDefault:!currentUser.addresses.length
+  };
+  currentUser.addresses.push(addr);
+  saveUserData();
+  closeModal('addAddressModal');
+  renderAddressPanel();
+  renderCheckoutAddresses();
+  showToast('Address saved!','green');
+}
+
+// ═══════════════ CHECKOUT ═══════════════
+function startCheckout(){
+  if(!currentUser){
+    closeModal('cartModal');
+    pendingAccountTab=null;
+    openModal('authModal');
+    showToast('Please sign in to checkout','blue');
+    return;
+  }
+  if(!cart.length){showToast('Cart is empty!');return;}
+  closeModal('cartModal');
+  // Reset steps
+  setCheckoutStep(1);
+  renderCheckoutAddresses();
+  openModal('checkoutModal');
+}
+
+function setCheckoutStep(n){
+  [1,2,3].forEach(i=>{
+    const s=document.getElementById('cStep'+i);
+    const p=document.getElementById('cPanel'+i);
+    s.className='checkout-step'+(i<n?' done':i===n?' active':'');
+    p.className='checkout-panel'+(i===n?' active':'');
+  });
+}
+
+function renderCheckoutAddresses(){
+  const el=document.getElementById('checkoutAddressList');
+  if(!currentUser||!currentUser.addresses||!currentUser.addresses.length){
+    el.innerHTML=`<div style="color:var(--gray-muted);padding:1rem 0;">No saved addresses. Add one below.</div>`;
+    return;
+  }
+  el.innerHTML=currentUser.addresses.map((a,i)=>`
+    <div class="address-card ${selectedAddressIdx===i?'default':''}" style="cursor:pointer;" onclick="selectAddress(${i})">
+      <div style="display:flex;align-items:center;gap:.75rem;">
+        <input type="radio" name="addr" ${selectedAddressIdx===i?'checked':''} style="accent-color:var(--red);width:16px;height:16px;flex-shrink:0;"/>
+        <div>
+          <div style="font-family:var(--font-head);font-weight:700;text-transform:uppercase;">${a.name} <span style="color:var(--gray-muted);font-size:.8rem;">(${a.type})</span></div>
+          <div style="font-size:.85rem;color:var(--gray-muted);">${a.line1}${a.line2?', '+a.line2:''}, ${a.city}, ${a.state} – ${a.pin}</div>
+          <div style="font-size:.85rem;color:var(--gray-muted);">📞 +91 ${a.phone}</div>
+        </div>
+      </div>
+    </div>`).join('');
+}
+
+function selectAddress(idx){selectedAddressIdx=idx;renderCheckoutAddresses();}
+
+function continueToPayment(){
+  if(!currentUser.addresses||!currentUser.addresses.length){showToast('Add a delivery address first');return;}
+  const t=cartTotal();
+  document.getElementById('checkoutSummary').innerHTML=`
+    <div class="cart-summary-row"><span>Items (${cart.reduce((s,c)=>s+c.qty,0)})</span><span>${rupee(t.sub)}</span></div>
+    ${t.disc?`<div class="cart-summary-row" style="color:var(--green);"><span>Discount</span><span>−${rupee(t.disc)}</span></div>`:''}
+    <div class="cart-summary-row"><span>Delivery</span><span>${t.ship?rupee(t.ship):'FREE'}</span></div>
+    <div class="cart-summary-row total"><span>Order Total</span><span>${rupee(t.total)}</span></div>`;
+  setCheckoutStep(2);
+}
+
+function selectPayment(el,type){
+  document.querySelectorAll('.payment-option').forEach(o=>o.classList.remove('selected'));
+  el.classList.add('selected');
+  selectedPayment=type;
+  document.getElementById('upiField').style.display=type==='upi'?'block':'none';
+  document.getElementById('cardFields').style.display=type==='card'?'block':'none';
+}
+
+function placeOrder(){
+  const orderId='TT-'+Date.now().toString(36).toUpperCase();
+  const t=cartTotal();
+  const order={
+    id:orderId,
+    date:new Date().toLocaleDateString('en-IN'),
+    items:cart.reduce((s,c)=>s+c.qty,0),
+    total:t.total,
+    status:'Processing',
+    statusCls:'status-processing',
+    payment:selectedPayment,
+    address:currentUser.addresses[selectedAddressIdx]
+  };
+  currentUser.orders.unshift(order);
+  saveUserData();
+  cart=[];couponApplied=false;
+  updateCartCount();
+  document.getElementById('orderIdDisplay').textContent='Order ID: '+orderId;
+  setCheckoutStep(3);
+}
+
+// ═══════════════ SEARCH ═══════════════
+function handleSearch(){
+  const q=document.getElementById('searchInput').value.trim().toLowerCase();
+  if(!q)return;
+  const matches=[...allProducts,...allBestsellers].filter(p=>
+    p.name.toLowerCase().includes(q)||p.brand.toLowerCase().includes(q)||
+    p.sku.toLowerCase().includes(q)||p.cat.toLowerCase().includes(q));
+  const banner=document.getElementById('searchResultsBanner');
+  const txt=document.getElementById('searchResultsText');
+  if(matches.length){
+    txt.textContent=`Showing ${matches.length} result(s) for "${q}"`;
+    banner.classList.add('visible');
+    document.getElementById('featured').scrollIntoView({behavior:'smooth'});
+    // Render filtered
+    document.getElementById('productGrid').innerHTML=matches.map(p=>`
+      <div class="product-card" onclick="openProductDetail(${p.id})">
+        ${p.badge?`<div class="product-badge ${p.badgeCls}">${p.badge}</div>`:''}
+        <div class="product-img"><span style="font-size:3rem">${p.icon}</span></div>
+        <div class="product-info">
+          <div class="product-brand">${p.brand}</div>
+          <div class="product-name">${p.name}</div>
+          <div class="product-sku">SKU: ${p.sku}</div>
+          <div class="product-rating"><span class="stars">${starsHtml(p.stars)}</span><span class="review-count">(${p.reviews.toLocaleString()})</span></div>
+          <div class="product-price-row">
+            <div><span class="price">${rupee(p.price)}</span>${p.was?`<span class="price-was"> ${rupee(p.was)}</span>`:''}</div>
+            <button class="add-btn" onclick="event.stopPropagation();addToCart(${p.id})">+ Add</button>
+          </div>
+        </div>
+      </div>`).join('');
+  } else {
+    txt.textContent=`No results found for "${q}"`;
+    banner.classList.add('visible');
+    document.getElementById('productGrid').innerHTML=`<div style="grid-column:1/-1;text-align:center;padding:3rem;color:var(--gray-muted);font-family:var(--font-head);font-size:1.1rem;text-transform:uppercase;">No parts found for "${q}"</div>`;
+  }
+}
+function clearSearch(){
+  document.getElementById('searchInput').value='';
+  document.getElementById('searchResultsBanner').classList.remove('visible');
+  renderCards(allProducts,'productGrid');
+}
+document.getElementById('searchInput').addEventListener('keydown',e=>{if(e.key==='Enter')handleSearch();});
+
+// ═══════════════ FILTER / CATEGORY ═══════════════
+function filterParts(btn,cat){
+  document.querySelectorAll('.cat-pill').forEach(b=>b.classList.remove('active'));
+  if(btn)btn.classList.add('active');
+  clearSearch();
+  document.querySelectorAll('#productGrid .product-card').forEach(c=>{
+    c.style.display=(cat==='all'||c.dataset.cat===cat)?'':'none';
+  });
+}
+function filterByCategory(cat){
+  const pill=document.querySelector(`.cat-pill[onclick*="'${cat}'"]`);
+  filterParts(pill,cat);
+  document.getElementById('featured').scrollIntoView({behavior:'smooth'});
+}
+
+// ═══════════════ DEAL ═══════════════
+function claimDeal(){
+  if(!currentUser){showToast('Sign in to claim the deal!','blue');openAccountModal();return;}
+  // Add all filter items to cart
+  const dealItems=allProducts.filter(p=>p.cat==='filters');
+  dealItems.forEach(p=>{if(!cart.find(c=>c.id===p.id))addToCartById(p.id,true);});
+  couponApplied=true;
+  showToast('🔥 Deal claimed! Filter items + 10% off added to cart!','green');
+}
+
+// ═══════════════ CAT CARDS ═══════════════
+document.querySelectorAll('.cat-card').forEach(card=>{
+  card.addEventListener('click',function(){
+    const fn=this.getAttribute('onclick');
+    if(!fn)return;
+    const m=fn.match(/'(\w+)'/);
+    if(m)filterByCategory(m[1]);
+  });
+});
+</script>
+</body>
+</html>
